@@ -22,51 +22,51 @@ public class Main {
         long min = Long.MAX_VALUE, max = Long.MIN_VALUE;
 
         // Парсинг csv
-//        try (BufferedReader read = new BufferedReader(new FileReader("C:\\project\\infomaksimum\\out.csv"))) {
-//
-//            String strochka = read.readLine();
-//            while ((strochka = read.readLine()) != null) {
-//                String[] podstr = strochka.split(",");
-//                String gt = podstr[0];
-//                BigInteger weight = new BigInteger(podstr[2]);
-//
-//                dublicateGroup.merge(gt, 1L, (k, v) -> k + v);
-//
-//                sumWeight.merge(gt, weight, BigInteger::add);
-//
-//                if (weight.compareTo(BigInteger.valueOf(min)) == -1) {
-//                    min = weight.longValue();
-//                }
-//
-//                if (weight.compareTo(BigInteger.valueOf(max)) == 1) {
-//                    max = weight.longValue();
-//                }
-//            }
-//            System.out.println("Дубликаты\n");
-//            for (String name : dublicateGroup.keySet()) {
-//                String key = name;
-//                String value = dublicateGroup.get(name).toString();
-//                System.out.println(key + " " + value);
-//            }
-//
-//            System.out.println("\nОбщий вес\n");
-//            for (String name : sumWeight.keySet()) {
-//                String key = name;
-//                String value = sumWeight.get(name).toString();
-//                System.out.println(key + " " + value);
-//            }
-//
-//            System.out.println("\nМинимальный вес объекта = " + min);
-//
-//            System.out.println("\nМаксимальный вес объекта = " + max);
-//
-//        } catch (FileNotFoundException e) {
-//            throw e;
-//        }
+        try (BufferedReader read = new BufferedReader(new FileReader("C:\\project\\infomaksimum\\out.csv"))) {
+
+            String strochka = read.readLine();
+            while ((strochka = read.readLine()) != null) {
+                String[] podstr = strochka.split(",");
+                String gt = podstr[0];
+                BigInteger weight = new BigInteger(podstr[2]);
+
+                dublicateGroup.merge(gt, 1L, (k, v) -> k + v);
+
+                sumWeight.merge(gt, weight, BigInteger::add);
+
+                if (weight.compareTo(BigInteger.valueOf(min)) == -1) {
+                    min = weight.longValue();
+                }
+
+                if (weight.compareTo(BigInteger.valueOf(max)) == 1) {
+                    max = weight.longValue();
+                }
+            }
+            System.out.println("Дубликаты\n");
+            for (String name : dublicateGroup.keySet()) {
+                String key = name;
+                String value = dublicateGroup.get(name).toString();
+                System.out.println(key + " " + value);
+            }
+
+            System.out.println("\nОбщий вес\n");
+            for (String name : sumWeight.keySet()) {
+                String key = name;
+                String value = sumWeight.get(name).toString();
+                System.out.println(key + " " + value);
+            }
+
+            System.out.println("\nМинимальный вес объекта = " + min);
+
+            System.out.println("\nМаксимальный вес объекта = " + max);
+
+        } catch (FileNotFoundException e) {
+            throw e;
+        }
 
         // Парсинг json
 
-        try (BufferedReader readj = new BufferedReader(new FileReader("C:\\project\\infomaksimum\\out.json"))) {
+        try (BufferedReader readj = new BufferedReader(new FileReader("C:\\Users\\kendi\\out.json"))) {
 
             Gson gson = new Gson();
             Groups[] groups = gson.fromJson(readj, new TypeToken<Groups[]>() {
